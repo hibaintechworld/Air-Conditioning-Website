@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Heating & Air Conditioning</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+
+        .hero {
+            background: url('assets/hero.jpg') no-repeat center center/cover;
+            min-height: 100vh;
+            /* min-width: 10vh; */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            padding: 40px 0;
+            color: #333;
+        }
+
+        .navbar {
+            background: transparent;
+            padding-top: 20px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #00c4cc;
+        }
+
+        .btn-quote {
+            background-color: #00c4cc;
+            color: white;
+            font-weight: 500;
+            padding: 8px 18px;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .btn-quote:hover {
+            background-color: #5cd0d4;
+            color: white;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px !important;
+            margin-bottom: 80px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-top: 30px;
+            /* Reduced from 90px */
+        }
+
+        .hero h2 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: #666;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 26px;
+            margin-left: 40px;
+        }
+
+        .btn-visit {
+            margin-top: 20px;
+            background-color: #00c4cc;
+            border: none;
+            color: white;
+            padding: 12px 28px;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-visit:hover {
+            background-color: #019ca2;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+
+            .hero h1,
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .customize-btn {
+            position: absolute;
+            top: 250px;
+            right: 5px;
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            cursor: default;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .customize-btn i {
+            color: #333;
+        }
+
+        .customize-btn:hover {
+            background-color: #50bfeb;
+            color: white;
+        }
+
+        .services-section {
+            background: #f8f9fa;
+        }
+
+        .service-card {
+            background: white;
+            padding: 60px 10px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .service-card i {
+            font-size: 40px;
+            color: #00c4cc;
+            margin-bottom: 15px;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card h5 {
+            font-weight: 600;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .service-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0%;
+            height: 3px;
+            background: #00c4cc;
+            transition: width 0.4s ease, left 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card:hover i {
+            transform: scale(1.2);
+        }
+
+        .service-card:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .btn-view-more {
+            background-color: #00c4cc;
+            color: white;
+            padding: 12px 30px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-view-more:hover {
+            background-color: #50bfeb;
+            /* color:white; */
+            transform: translateY(-3px);
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 150px;
+            font-size: 90px !important;
+        }
+
+
+        .container {
+            display: flex;
+            max-width: 1100px;
+            width: 100%;
+            background: #f2f2f2;
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .left {
+            flex: 1;
+            padding: 60px 40px;
+        }
+
+        .left h1 {
+            font-size: 32px;
+            line-height: 1.4;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .left p {
+            margin-top: 20px;
+            color: #444;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .left button {
+            margin-top: 30px;
+            padding: 10px 25px;
+            background-color: #00b5c9;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .left button:hover {
+            background-color: #fdd45c;
+            color: #000;
+        }
+
+
+        .right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex: 1;
+        }
+
+        .service-boxes {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .box {
+            flex: 1;
+            padding: 30px;
+            color: #333;
+            text-align: center;
+        }
+
+        .box i {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .box.yellow {
+            background-color: #fdd45c;
+        }
+
+        .box.blue {
+            background-color: #00b5c9;
+            color: white;
+        }
+
+        .box.blue p {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .right,
+            .left {
+                width: 100%;
+            }
+
+            .service-boxes {
+                flex-direction: column;
+            }
+        }
+
+        .how-we-work {
+            padding: 60px 20px 20px;
+        }
+
+        .how-we-work h1 {
+            font-size: 32px;
+            color: #222;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        .underline-wrapper {
+            margin: 30px auto 10px;
+            width: 200px;
+            position: relative;
+        }
+
+        .underline-wrapper::before {
+            content: "";
+            display: block;
+            width: 2px;
+            height: 20px;
+            background-color: #222;
+            margin: 0 auto 10px;
+        }
+
+        .underline {
+            border-top: 1px dashed #fdd45c;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .read-more a {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #222;
+            text-decoration: none;
+
+        }
+
+        .video-section {
+            position: relative;
+            background: url('assets/how-we-work.jpg') center center/cover no-repeat;
+            width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .video-overlay {
+            position: absolute;
+            text-align: center;
+            color: white;
+        }
+
+        .play-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fdd45c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 10px #fdd45c;
+            cursor: pointer;
+        }
+
+        .video-overlay h2 {
+            font-size: 26px;
+            font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .how-we-work h1 {
+                font-size: 24px;
+            }
+
+            .video-overlay h2 {
+                font-size: 20px;
+            }
+        }
+
+         .testimonial-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+    }
+
+    .testimonial-role {
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+   
+    .why-choose {
+      background-color: #fcd84f;
+    }
+
+    .why-text h5 {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .why-text h2 {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .btn-blue {
+      background-color: #008cba;
+      color: white;
+      border-radius: 0;
+    }
+
+    .btn-blue:hover {
+      background-color: #fcd84f;
+      color: #fff;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #f1f1f1;
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: #f7f7f7;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-icon {
+      font-size: 1.2rem;
+      margin-right: 8px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+      font-size: 0.8rem;
+    }
+          @media (max-width: 768px) {
+    section > div > div {
+      text-align: center;
+    }
+  }
+  .gallery-img {
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 0 0 transparent;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+  
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container justify-content-between">
+                <div class="logo">
+                    <img src="assets/snow-fall.png" alt="Logo">
+                    <span class="fw-bold">FENNEY GROUP</span>
+                </div>
+
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item px-3"><a class="nav-link" href="#">HOME</a></li>
+                        <li class="nav-item px-3"><a class="nav-link" href="#">ABOUT</a></li>
+                        <li class="nav-item px-3"><a class="nav-link" href="#">SERVICES</a></li>
+                        <li class="nav-item px-3"><a class="nav-link" href="#">CONTACT</a></li>
+                    </ul>
+                </div>
+
+                <a href="#" class="btn btn-quote">GET QUOTE</a>
+            </div>
+        </nav>
+
+        <div class="customize-btn">
+            <i class="fas fa-cog"></i> Customize
+        </div>
+
+        <div class="hero-content">
+            <h1>Heating and Air</h1>
+            <h2>Conditioning Specialist</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit.</p>
+            <a href="#" class="btn btn-visit">CALL FOR VISIT</a>
+        </div>
+
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services-section py-5" style="background-color: #fff; padding-left:30px; padding-right: 30px;">
+        <div class="card-container">
+            <h2 class="text-center mb-5">Our Services</h2>
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <i class="fas fa-fire"></i>
+                        <h5>Heating System Installation</h5>
+                        <p>We provide professional heating system installation for residential and commercial
+                            properties.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <i class="fas fa-snowflake"></i>
+                        <h5>Cooling System Installation</h5>
+                        <p>Expert cooling system setup ensuring maximum efficiency and comfort for your space.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <i class="fas fa-tools"></i>
+                        <h5>System Maintenance</h5>
+                        <p>Keep your systems running smoothly with our regular maintenance services and inspections.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <a href="#" class="btn btn-view-more">VIEW MORE</a>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </section>
+
+    <section id="logos" style="margin-top: 70px;">
+        <div class="logos">
+            <img src="assets/logoipsum-1.svg" alt="">
+            <img src="assets/logoipsum-2.svg" alt="">
+            <img src="assets/logoipsum-3.svg" alt="">
+            <img src="assets/logoipsum-4.svg" alt="">
+        </div>
+    </section>
+
+    <section class="about-us" style="padding:40px; margin-top:50px;">
+        <div class="container">
+            <div class="left">
+                <h1>Experience Quality Air<br>Conditioning Service in<br>Brokllyn New York</h1>
+                <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur arcu erat, accumsan id
+                    imperdiet
+                    et, porttitor at sem. Proin eget tortor risus.</p>
+                <button data-aos="fade-up" data-aos-duration="1000">LEARN MORE</button>
+            </div>
+            <div class="right">
+                <img src="assets/about-us.jpg" alt="Electrician">
+                <div class="service-boxes">
+                    <div class="box yellow">
+                        <i class="fas fa-snowflake"></i>
+                        <p>Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="box blue">
+                        <i class="fas fa-tools"></i>
+                        <p>Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="how-we-work">
+        <h1 style="text-align: center;">AC Repair & Installation<br>Services In Your Locality</h1>
+
+        <div class="underline-wrapper">
+            <div class="underline"></div>
+            <div class="read-more" style="text-align: center;"><a href="#">READ MORE</a></div>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="video-overlay">
+            <div class="play-button">
+                <i class="fas fa-play"></i>
+            </div>
+            <h2>Watch How We Work</h2>
+        </div>
+    </section>
+    <section style="position: relative; background-color: #fff; padding: 60px 20px 40px; text-align: center;">
+  <!-- Frozen icon background effect -->
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('assets/snow-fall.png'); background-repeat: repeat; background-size: 120px; opacity: 0.05; z-index: 0;"></div>
+
+  <div style="position: relative; z-index: 1;">
+    <h2 style="font-weight: bold; font-size: 28px; margin-bottom: 10px;">Number Speaks</h2>
+    <p style="max-width: 600px; margin: 0 auto 40px; color: #666;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 50px;">
+      <div>
+        <h3 style="color: #00b5c9; font-size: 36px; font-weight: bold;">150</h3>
+        <p style="font-size: 14px; color: #444;">Air Conditioning Repairs<br>and Install</p>
+      </div>
+      <div>
+        <h3 style="color: #00b5c9; font-size: 36px; font-weight: bold;">100</h3>
+        <p style="font-size: 14px; color: #444;">Air Conditioning Repairs<br>and Services</p>
+      </div>
+      <div>
+        <h3 style="color: #00b5c9; font-size: 36px; font-weight: bold;">250</h3>
+        <p style="font-size: 14px; color: #444;">Customers are<br>Satisfied with our Services</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Image Gallery -->
+<section style="padding: 40px 0; background-color: #f3f3f3;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto; gap: 20px;" class="gallery-img">
+    <div style="flex: 1 1 300px; max-width: 300px;">
+      <img src="assets/gallery-1.jpg" alt="AC Outdoor" style="width: 100%; height: auto; margin-bottom: 20px;" class="gallery-img">
+      <img src="assets/gallery-2.jpg" alt="Living Room AC" style="width: 100%; height: auto;" class="gallery-img">
+    </div>
+    <div style="flex: 1 1 300px; max-width: 300px;">
+      <img src="assets/gallery-3.jpg" alt="AC Indoors" style="width: 100%; height: auto; margin-bottom: 20px;" class="gallery-img">
+      <img src="assets/gallery-5.jpg" alt="Building with AC" style="width: 100%; height: auto;" class="gallery-img">
+    </div>
+    <div style="flex: 1 1 300px; max-width: 300px;">
+      <img src="assets/gallery-6.jpg" alt="Bedroom AC" style="width: 100%; height: auto; margin-bottom: 20px;" class="gallery-img">
+      <img src="assets/gallery-7.jpg" alt="Commercial AC Units" style="width: 100%; height: auto;" class="gallery-img">
+    </div>
+  </div>
+</section>
+
+    <!-- Testimonials Section (2x2 layout) -->
+<section class="text-center py-5">
+  <h2 class="fw-bold mb-4">Testimonials</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,<br>
+luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+  <div class="container-testimonial mt-5">
+    <div class="row justify-content-center gy-4">
+      <!-- First Row -->
+      <div class="col-md-3 text-center">
+        <img src="assets/client-1.png" alt="Client" class="testimonial-img mb-2">
+        <div class="testimonial-name">Jon Doe</div>
+        <div class="testimonial-role">Web Developer</div>
+        <p class="small mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet.</p>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="assets/client-2.png" alt="Client" class="testimonial-img mb-2">
+        <div class="testimonial-name">Stephanie Wilson</div>
+        <div class="testimonial-role">Marketing Head</div>
+        <p class="small mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet.</p>
+      </div>
+
+      <!-- Second Row -->
+      <div class="w-100 d-none d-md-block"></div> <!-- Force next row on md+ screens -->
+
+      <div class="col-md-3 text-center">
+        <img src="assets/client-3.png" alt="Client" class="testimonial-img mb-2">
+        <div class="testimonial-name">Martin Sine</div>
+        <div class="testimonial-role">Sales Manager</div>
+        <p class="small mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet.</p>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="assets/client-4.png" alt="Client" class="testimonial-img mb-2">
+        <div class="testimonial-name">Pushpar Singh</div>
+        <div class="testimonial-role">Support Lead</div>
+        <p class="small mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Why Choose Us Section -->
+<section class="why-choose py-5">
+  <div class="container-Why">
+    <div class="row align-items-center">
+      <!-- Left Image -->
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="assets/Why-Us.jpg" class="img-fluid" alt="Couple">
+      </div>
+
+      <!-- Right Content -->
+      <div class="col-md-6 why-text">
+        <h5>Why Choose Us?</h5>
+        <h2>Focus On Getting Our Jobs Done</h2>
+        <p class="my-3">Mauris nec dui sit amet lorem vulputate placerat. Curabitur euismod, arcu nec auctor fermentum, nisl purus egestas lorem, a feugiat tortor mauris eget ligula.</p>
+        <button class="btn btn-blue mb-4">Hire Clean System</button>
+
+        <!-- Contact Info Flex Layout -->
+        <div class="d-flex flex-wrap gap-4">
+          <!-- Address -->
+          <div class="d-flex align-items-start">
+            <span class="me-2 fs-5">📍</span>
+            <div>
+              <strong>Address:</strong><br>
+              66 Broklyn Street, New York
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="d-flex align-items-start">
+            <span class="me-2 fs-5">📧</span>
+            <div>
+              <strong>Email:</strong><br>
+              mail@example.com
+            </div>
+          </div>
+
+          <!-- Open Hours -->
+          <div class="d-flex align-items-start">
+            <span class="me-2 fs-5">⏰</span>
+            <div>
+              <strong>Open Hours:</strong><br>
+              Mon-Sat: 9am - 6pm
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="footer py-5" style="background-color: #000;">
+  <div class="container-footer">
+    <div class="row text-center text-md-start">
+      <div class="col-md-4 mb-4" style="color: #fff;">
+        <p><span class="footer-icon" style="color:white !important; margin-left: 50px;">📍</span> 45 Building Street, New York</p>
+        <p><span class="footer-icon" style="color:white !important; margin-left: 50px;">📧</span> support@domain.com</p>
+        <p><span class="footer-icon" style="color:white !important; margin-left: 50px;">⏰</span> Mon-Fri: 10am - 6pm</p>
+      </div>
+      <div class="col-md-2 mb-4">
+        <h6 style="color:white;">About</h6>
+        <a href="#">Company</a><br>
+        <a href="#">Team</a><br>
+        <a href="#">Careers</a>
+      </div>
+      <div class="col-md-2 mb-4">
+        <h6 style="color:white;">Air Conditioning</h6>
+        <a href="#">AC Repair</a><br>
+        <a href="#">Installation</a><br>
+        <a href="#">Cleaning</a>
+      </div>
+      <div class="col-md-2 mb-4">
+        <h6 style="color:white;">Heating</h6>
+        <a href="#">Heater Repair</a><br>
+        <a href="#">Maintenance</a><br>
+        <a href="#">Parts</a>
+      </div>
+      <div class="col-md-2 mb-4">
+        <h6 style="color:white;">Support</h6>
+        <a href="#">Help Center</a><br>
+        <a href="#">Privacy Policy</a><br>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col text-center footer-bottom">
+        <div class="mb-2">
+          <i class="fa-brands fa-facebook fa-beat-fade" style="color:orange; font-size: 15px; gap:20px;"></i>
+          <i class="fa-brands fa-twitter fa-beat-fade" style="color:orange; font-size: 15px;  gap:20px;"></i>
+          <i class="fa-brands fa-instagram fa-beat-fade" style="color:orange; font-size: 15px; gap: 20px;"></i>
+        </div>
+        <div style="color: #fff;">Copyright © 2025 Heating & AC Pro. All rights reserved.</div>
+           <div style="color: #fff;">Made with ❤️ by Hiba Saleem</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+
+</html>
